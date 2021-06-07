@@ -32,13 +32,33 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 }
 
 
-void UTankAimingComponent::AimAt(FVector Location, float LaunchSpeed)
-{
-	UE_LOG(LogTemp, Warning, TEXT("Firing at: %f"), LaunchSpeed);
-}
-
 void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
 {
 	Barrel = BarrelToSet;
+}
+
+
+void UTankAimingComponent::AimAt(FVector Location, float LaunchSpeed)
+{
+	if (!Barrel) { return; }
+
+	FVector OutLaunchVelocity;
+	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
+
+	if (UGameplayStatics::SuggestProjectileVelocity(this, OutLaunchVelocity, StartLocation, Location, LaunchSpeed, ESuggestProjVelocityTraceOption::DoNotTrace)) {
+		FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
+		MoveBarrelTowards(AimDirection);
+	}
+
+}
+
+
+void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
+{
+	FRotator BarrelRotation = Barrel->GetForwardVector().Rotation();
+	FRotator AimRotation = AimDirection.Rotation();
+	FRotator DeltaRotator = AimRotation - BarrelRotation;
+
+	UE_LOG(LogTemp, Warning, TEXT("Aim Rotation: %s"), *AimRotation.ToString());
 }
 
