@@ -42,10 +42,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	UPROPERTY(EditAnywhere, Category = Firing)
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 		float LaunchSpeed = 4000;
 
-	UPROPERTY(EditAnywhere, Category = Weapons)
+	UPROPERTY(EditDefaultsOnly, Category = Weapons)
 		TSubclassOf<AProjectile> Projectile;
 
 	UTankBarrel* Barrel;
