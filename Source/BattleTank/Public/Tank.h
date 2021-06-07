@@ -50,4 +50,7 @@ private:
 
 	UTankBarrel* Barrel;
 
+	double LastFireTime = 0;
+	float ReloadTimeInSeconds = 3.f;
+
 };
