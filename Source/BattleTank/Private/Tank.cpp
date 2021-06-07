@@ -11,12 +11,14 @@ ATank::ATank()
 
 }
 
+
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
+
 
 // Called every frame
 void ATank::Tick(float DeltaTime)
@@ -30,5 +32,12 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+
+void ATank::AimAt(FVector HitLocation)
+{
+	FString OurName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OurName, *HitLocation.ToString());
 }
 
