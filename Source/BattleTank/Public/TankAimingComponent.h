@@ -7,7 +7,9 @@
 #include "GameFramework/Actor.h"
 #include "TankAimingComponent.generated.h"
 
+
 class UTankBarrel;
+class UTankTurret;
 
 
 //	Holds barrel's properties and elevation.
@@ -21,7 +23,9 @@ public:
 	UTankAimingComponent();
 
 	void AimAt(FVector Location, float LaunchSpeed);
+
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+	void SetTurretReference(UTankTurret* TurretToSet);
 
 protected:
 	// Called when the game starts
@@ -34,6 +38,7 @@ public:
 
 private:
 	UTankBarrel* Barrel = nullptr;
+	UTankTurret* Turret = nullptr;
 
 	void MoveBarrelTowards(FVector AimDirection);
 		
