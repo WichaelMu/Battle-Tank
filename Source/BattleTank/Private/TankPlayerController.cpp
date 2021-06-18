@@ -10,14 +10,6 @@ void ATankPlayerController::BeginPlay() {
 	Super::BeginPlay();
 
 	auto ControlledTank = GetControlledTank();
-
-	if (ControlledTank) {
-		FString ObjectName = ControlledTank->GetName();
-		UE_LOG(LogTemp, Warning, TEXT("TankPlayerController possessing %s"), *ObjectName);
-	}
-	else {
-		UE_LOG(LogTemp, Error, TEXT("PLAYER CONTROLLER NOT POSSESSING A TANK"));
-	}
 }
 
 
