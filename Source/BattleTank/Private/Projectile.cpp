@@ -2,6 +2,7 @@
 
 
 #include "Projectile.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Engine/World.h"
 
 
@@ -34,9 +35,6 @@ void AProjectile::Tick(float DeltaTime)
 
 void AProjectile::LaunchProjectile(float Speed)
 {
-	float Time = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp, Warning, TEXT("%f: Projecitle FIRED at %f"), Time, Speed);
-
 	ProjectileMovement->SetVelocityInLocalSpace(FVector::ForwardVector * Speed);
 	ProjectileMovement->Activate();
 }
