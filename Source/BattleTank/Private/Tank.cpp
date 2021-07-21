@@ -11,7 +11,7 @@
 // Sets default values
 ATank::ATank()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
 	//	Create Tank Aiming Component and Tank Movement Component on default startup.
@@ -23,7 +23,7 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called to bind functionality to input
@@ -55,7 +55,8 @@ void ATank::Fire()
 	double Seconds = FPlatformTime::Seconds();
 	bool bIsReloaded = Seconds - LastFireTime > ReloadTimeInSeconds;
 
-	if (Barrel && bIsReloaded) {
+	if (Barrel && bIsReloaded)
+	{
 		FVector SpawnLocation = Barrel->GetSocketLocation(FName("Projectile"));
 		FRotator SpawnRotation = Barrel->GetSocketRotation(FName("Projectile"));
 

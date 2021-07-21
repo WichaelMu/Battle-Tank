@@ -6,7 +6,8 @@
 #include "Engine/World.h"
 
 
-void ATankPlayerController::BeginPlay() {
+void ATankPlayerController::BeginPlay()
+{
 	Super::BeginPlay();
 
 	auto ControlledTank = GetControlledTank();
@@ -21,7 +22,8 @@ void ATankPlayerController::Tick(float DeltaTime)
 }
 
 
-ATank* ATankPlayerController::GetControlledTank() const {
+ATank* ATankPlayerController::GetControlledTank() const
+{
 	return Cast<ATank>(GetPawn());
 }
 
@@ -50,7 +52,8 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation)
 	FVector2D ScreenLocation = FVector2D(sx * CrosshairX, sy * CrosshairY);
 
 	FVector LookDirection;
-	if (GetLookDirection(ScreenLocation, LookDirection)) {
+	if (GetLookDirection(ScreenLocation, LookDirection))
+	{
 		return GetLookVectorHitLocation(LookDirection, OutHitLocation);
 	}
 
@@ -67,7 +70,8 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 	FVector CameraLocation = PlayerCameraManager->GetCameraLocation();
 	FVector EndLocation = CameraLocation + LookDirection * LineTraceRange;
 
-	if (GetWorld()->LineTraceSingleByChannel(OutHit, CameraLocation, EndLocation, ECC_Visibility)) {
+	if (GetWorld()->LineTraceSingleByChannel(OutHit, CameraLocation, EndLocation, ECC_Visibility))
+	{
 		OutHitLocation = OutHit.Location;
 		return true;
 	}

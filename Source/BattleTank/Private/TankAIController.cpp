@@ -5,7 +5,8 @@
 #include "Tank.h"
 
 
-void ATankAIController::BeginPlay() {
+void ATankAIController::BeginPlay()
+{
 	Super::BeginPlay();
 
 	ControlledTank = Cast<ATank>(GetPawn());
@@ -18,10 +19,12 @@ void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (PlayerTank) {
+	if (PlayerTank)
+	{
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
 
-		if (ControlledTank) {
+		if (ControlledTank)
+		{
 			ControlledTank->Fire();
 		}
 	}

@@ -3,7 +3,8 @@
 
 #include "TankBarrel.h"
 
-void UTankBarrel::Elevate(float RelativeSpeed) {
+void UTankBarrel::Elevate(float RelativeSpeed)
+{
 	RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1, 1);
 
 	float ElevationChange = RelativeSpeed * MaxDegreesPerSecond * GetWorld()->DeltaTimeSeconds;

@@ -5,7 +5,8 @@
 #include "TankTrack.h"
 
 
-void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet) {
+void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
+{
 	if (!LeftTrackToSet || !RightTrackToSet) { return; }
 
 	LeftTrack = LeftTrackToSet;
@@ -13,7 +14,8 @@ void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* 
 }
 
 
-void UTankMovementComponent::IntendMoveForward(float Throw) {
+void UTankMovementComponent::IntendMoveForward(float Throw)
+{
 	auto Name = GetName();
 	UE_LOG(LogTemp, Warning, TEXT("%s: intend move forward throw: %f"), *Name, Throw);
 

@@ -7,13 +7,13 @@
 #include "TankTurret.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class BATTLETANK_API UTankTurret : public UStaticMeshComponent
 {
 	GENERATED_BODY()
-	
+
 public:
 	//	-1 max downward, +1 max upward.
 	void Rotate(float RelativeSpeed);

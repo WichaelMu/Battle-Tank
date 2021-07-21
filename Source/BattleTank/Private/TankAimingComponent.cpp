@@ -38,7 +38,8 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
-	if (!BarrelToSet) {
+	if (!BarrelToSet)
+	{
 		UE_LOG(LogTemp, Error, TEXT("%s: BARREL TO SET IS NULLPTR"), *(GetName()));
 		return;
 	}
@@ -48,7 +49,8 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 
 void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 {
-	if (!TurretToSet) {
+	if (!TurretToSet)
+	{
 		UE_LOG(LogTemp, Error, TEXT("%s: TURRET TO SET IS NULLPTR"), *(GetName()));
 		return;
 	}
@@ -64,7 +66,8 @@ void UTankAimingComponent::AimAt(FVector Location, float LaunchSpeed)
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
 
-	if (UGameplayStatics::SuggestProjectileVelocity(this, OutLaunchVelocity, StartLocation, Location, LaunchSpeed, false, 0, 0, ESuggestProjVelocityTraceOption::DoNotTrace)) {
+	if (UGameplayStatics::SuggestProjectileVelocity(this, OutLaunchVelocity, StartLocation, Location, LaunchSpeed, false, 0, 0, ESuggestProjVelocityTraceOption::DoNotTrace))
+	{
 		FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
 	}
